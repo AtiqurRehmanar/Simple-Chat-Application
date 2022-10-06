@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
-import Chatowner from "./assets/chatowner.svg"
-import OtherPeople from "./assets/other.svg"
-function Chat({ username, room }) {
+import Chatowner from "../assets/chatowner.svg"
+import OtherPeople from "../assets/other.svg"
+function Chat({ username }) {
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
 
   const sendMessage = async () => {
     if (currentMessage !== "") {
       const messageData = {
-        room: room,
         author: username,
         message: currentMessage,
         time:
@@ -25,14 +24,11 @@ function Chat({ username, room }) {
   };
 
   useEffect(() => {
-    let data=null;
     if(localStorage.getItem("messages")){
-       data=JSON.parse(localStorage.getItem("messages"));
+     const data=JSON.parse(localStorage.getItem("messages"));
       setMessageList(data)
-      console.log(data,"data")
     }
-  //  setMessageList(localStorage.getItem("messages", JSON.parse(messageList)));
-  }, [setMessageList,setCurrentMessage]);
+  }, []);
 
   return (
     <div className="chat-window">
