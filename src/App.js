@@ -1,11 +1,10 @@
 import "./App.css";
 import { useState } from "react";
-import Chat from "./Chat";
+import Chat from "./Components/Chat";
 
 
 function App() {
   const [username, setUsername] = useState("");
-  const [room, setRoom] = useState("");
   const [showChat, setShowChat] = useState(false);
 
   const joinRoom = () => {
@@ -30,7 +29,7 @@ function App() {
           <button onClick={joinRoom}>Join A Room</button>
         </div>
       ) : (
-          <Chat username={username} room={room} />
+          <Chat username={username}  />
       )}
     </div>
   );
