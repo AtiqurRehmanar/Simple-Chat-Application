@@ -54,7 +54,7 @@ body {
 }
 
 .chat-window {
-  width: 300px;
+  width: 650px;
   height: 420px;
 }
 
@@ -79,7 +79,7 @@ body {
 }
 
 .chat-window .chat-body {
-  height: calc(450px - (45px + 70px));
+  height: 50vh;
   border: 1px solid #263238;
   background: #fff;
 

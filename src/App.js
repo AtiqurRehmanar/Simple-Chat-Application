@@ -26,11 +26,13 @@ function App() {
               setUsername(event.target.value);
             }}
           />
-          
+
           <button onClick={joinRoom}>Join A Room</button>
         </div>
       ) : (
-        <Chat  username={username} room={room} />
+        <><h1 style={{color: darkgreen}}>ChatBot</h1>
+          <Chat username={username} room={room} />
+        </>
       )}
     </div>
   );
