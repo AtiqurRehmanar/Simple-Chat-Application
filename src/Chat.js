@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
-
+import Chatowner from "./assets/chatowner.svg"
+import OtherPeople from "./assets/other.svg"
 function Chat({ username, room }) {
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
@@ -18,18 +19,25 @@ function Chat({ username, room }) {
       };
 
       setMessageList((list) => [...list, messageData]);
+         localStorage.setItem("messages",JSON.stringify(messageList));
       setCurrentMessage("");
     }
   };
 
   useEffect(() => {
-   
-  }, []);
+    let data=null;
+    if(localStorage.getItem("messages")){
+       data=JSON.parse(localStorage.getItem("messages"));
+      setMessageList(data)
+      console.log(data,"data")
+    }
+  //  setMessageList(localStorage.getItem("messages", JSON.parse(messageList)));
+  }, [setMessageList,setCurrentMessage]);
 
   return (
     <div className="chat-window">
       <div className="chat-header">
-        <p>Live Chat</p>
+        <p>Live Chat {username}</p>
       </div>
       <div className="chat-body">
         <ScrollToBottom className="message-container">
@@ -39,10 +47,19 @@ function Chat({ username, room }) {
                 className="message"
                 id={username === messageContent.author ? "you" : "other"}
               >
-                <div>
+                {/*user avatar image*/}
+                <img
+                  src={
+                    username === messageContent.author ? Chatowner : OtherPeople
+                  }
+                  alt="image"
+                />
+                {/* message content */}
+                <div className="message-content-container">
                   <div className="message-content">
                     <p>{messageContent.message}</p>
                   </div>
+                  {/* message timestamp */}
                   <div className="message-meta">
                     <p id="time">{messageContent.time}</p>
                     <p id="author">{messageContent.author}</p>
@@ -61,10 +78,11 @@ function Chat({ username, room }) {
           onChange={(event) => {
             setCurrentMessage(event.target.value);
           }}
-          onKeyPress={(event) => {
+          onKeyDown={(event) => {
             event.key === "Enter" && sendMessage();
           }}
         />
+        {/* trigger message for sending message */}
         <button onClick={sendMessage}>&#9658;</button>
       </div>
     </div>

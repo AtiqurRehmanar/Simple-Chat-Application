@@ -65,7 +65,7 @@ body {
 .chat-window .chat-header {
   height: 45px;
   border-radius: 6px;
-  background: #263238;
+  background: purple;
   position: relative;
   cursor: pointer;
 }
@@ -188,6 +188,7 @@ body {
   outline: none;
   font-size: 25px;
   color: lightgray;
+  background-color: purple;
 }
 
 .chat-window .chat-footer button:hover {
@@ -196,4 +197,11 @@ body {
 
 .hide {
   opacity: 0 !important;
+}
+.message-content-container{
+  margin-top: 15px;
+}
+img{
+  margin-top: -17px;
+  width: 50px;
 }
