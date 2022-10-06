@@ -1,11 +1,12 @@
 .App {
   width: 100vw;
-  height: 70vh;
-  background: #fff;
+  height: 100vh;
   color: #212121;
   font-family: "Open Sans", sans-serif;
   display: grid;
   place-items: center;
+      background: #76b852;
+
 }
 
 body {
@@ -19,6 +20,9 @@ body {
   display: flex;
   flex-direction: column;
   text-align: center;
+  background: whitesmoke;
+  padding: 85px;
+  border-radius: 20px;
 }
 
 .joinChatContainer h3 {
@@ -54,8 +58,7 @@ body {
 }
 
 .chat-window {
-  width: 650px;
-  height: 420px;
+  width: 750px;
 }
 
 .chat-window p {
