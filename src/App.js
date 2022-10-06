@@ -30,9 +30,7 @@ function App() {
           <button onClick={joinRoom}>Join A Room</button>
         </div>
       ) : (
-        <><h1 style={{color: "darkgreen"}}>ChatBot</h1>
           <Chat username={username} room={room} />
-        </>
       )}
     </div>
   );
